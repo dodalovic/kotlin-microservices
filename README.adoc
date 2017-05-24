@@ -1,0 +1,33 @@
+= Kotlin microservices
+
+== Running services
+
+* Package apps:
++
+[source,bash]
+.execute in `kotlin-user-service`
+$ mvn clean package
++
+[source,bash]
+.execute in `kotlin-api-gateway`
+$ mvn clean package
+
+* Start services
++
+[source,bash]
+.execute in project root
+$ docker-compose up --build -d
+
+* Sample request
++
+[source,bash]
+.execute in shell
+curl -s http://localhost:8080/users/5925e46d9aa2b5d51cc9c3c0 | jq .
++
+[source,bash]
+.response
+{
+  "email": "email@mail.com",
+  "name": "John",
+  "lastname": "Doe"
+}

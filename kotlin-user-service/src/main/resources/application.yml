@@ -1,0 +1,5 @@
+spring:
+  data:
+    mongodb:
+      host: ${mongo.host}
+      database: users

@@ -1,0 +1,9 @@
+zuul:
+  routes:
+    users:
+      path: /users/**
+      url: http://${user.service.url}/users
+
+ribbon:
+  eureka:
+    enabled: false

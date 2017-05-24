@@ -1,0 +1,25 @@
+version: '2'
+
+services:
+  kotlin-user-service:
+    build: kotlin-user-service
+    image: kotlin-user-service
+    depends_on:
+      - kotlin-mongo
+    environment: 
+      JAVA_OPTS: -Dmongo.host=kotlin-mongo
+    ports:
+      - "8081:8080"
+  kotlin-api-gateway:
+    build: kotlin-api-gateway
+    image: kotlin-api-gateway
+    depends_on: 
+      - kotlin-user-service
+    environment: 
+      JAVA_OPTS: -Duser.service.url=kotlin-user-service:8080
+    ports:
+      - "8080:8080"
+  kotlin-mongo: 
+    image: mongo
+    ports:
+      - "27017:27017"
