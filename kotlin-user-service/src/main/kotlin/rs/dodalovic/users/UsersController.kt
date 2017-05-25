@@ -19,7 +19,6 @@ class UsersController(val userRepo: UserRepository) {
         return userRepo.findOne(userId).toUserDTO()
     }
 
-    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/users")
     fun createUser(@RequestBody userDTO: UserDTO, builder: UriComponentsBuilder): ResponseEntity<Unit> {
         val createdUserURI = builder.path("/{userId}").buildAndExpand(userRepo.save(userDTO.toUser()).id).toUriString()
