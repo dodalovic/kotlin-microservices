@@ -5,20 +5,21 @@ services:
     image: kotlin-user-service
     depends_on:
       - kotlin-mongo
-    environment: 
+    environment:
       JAVA_OPTS: -Dmongo.host=kotlin-mongo -agentlib:jdwp=transport=dt_socket,server=y,address=1044,suspend=n
     ports:
-      - "8081:8080"
+      - "${KOTLIN_USER_SERVICE_DEBUG_PORT:-1045}:1044"
   kotlin-api-gateway:
     build: kotlin-api-gateway
     image: kotlin-api-gateway
-    depends_on: 
+    depends_on:
       - kotlin-user-service
-    environment: 
+    environment:
       JAVA_OPTS: -Duser.service.url=kotlin-user-service:8080 -agentlib:jdwp=transport=dt_socket,server=y,address=1044,suspend=n
     ports:
       - "8080:8080"
-  kotlin-mongo: 
+      - "${KOTLIN_API_GATEWAY_DEBUG_PORT:-1044}:1044"
+  kotlin-mongo:
     image: mongo
     ports:
       - "27017:27017"
