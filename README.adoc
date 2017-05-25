@@ -37,7 +37,7 @@ http -h POST http://localhost:8080/users/ 'Content-Type: application/json' email
 ----
 <1> http is https://httpie.org/[httpie^] command line client
 +
-[source]
+[source,http]
 .response
 HTTP/1.1 201
 Date: Thu, 25 May 2017 10:12:17 GMT
@@ -51,7 +51,7 @@ X-Application-Context: application
 .execute in shell
 http :8080/users/5926ae01410df8000740da9a
 +
-[source]
+[source,http]
 .response
 HTTP/1.1 200
 Content-Type: application/json;charset=UTF-8
