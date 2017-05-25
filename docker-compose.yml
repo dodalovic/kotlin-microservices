@@ -1,5 +1,4 @@
-version: '2'
-
+version: '2.1'
 services:
   kotlin-user-service:
     build: kotlin-user-service
