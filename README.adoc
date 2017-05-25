@@ -33,7 +33,9 @@ $ docker-compose up --build -d
 [source,bash]
 .execute in shell
 ----
-http -h POST http://localhost:8080/users/ 'Content-Type: application/json' email=john@doe.com name=John lastname=Doe#<1>
+http -h POST http://localhost:8080/users/ \#<1>
+    'Content-Type: application/json' \
+    email=john@doe.com name=John lastname=Doe
 ----
 <1> http is https://httpie.org/[httpie^] command line client
 +
