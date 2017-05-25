@@ -6,7 +6,7 @@ services:
     depends_on:
       - kotlin-mongo
     environment: 
-      JAVA_OPTS: -Dmongo.host=kotlin-mongo
+      JAVA_OPTS: -Dmongo.host=kotlin-mongo -agentlib:jdwp=transport=dt_socket,server=y,address=1044,suspend=n
     ports:
       - "8081:8080"
   kotlin-api-gateway:
@@ -15,7 +15,7 @@ services:
     depends_on: 
       - kotlin-user-service
     environment: 
-      JAVA_OPTS: -Duser.service.url=kotlin-user-service:8080
+      JAVA_OPTS: -Duser.service.url=kotlin-user-service:8080 -agentlib:jdwp=transport=dt_socket,server=y,address=1044,suspend=n
     ports:
       - "8080:8080"
   kotlin-mongo: 
