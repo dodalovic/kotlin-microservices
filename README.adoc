@@ -1,5 +1,14 @@
 = Kotlin microservices
 
+[IMPORTANT]
+====
+Tested with: 
+
+* Maven 3.5.0
+* Docker version 17.03.1-ce
+* docker-compose version 1.11.2
+====
+
 == Running services
 
 * Package apps:
