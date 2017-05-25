@@ -18,16 +18,35 @@ $ mvn clean package
 .execute in project root
 $ docker-compose up --build -d
 
-* Sample request
+* Sample user create request
 +
 [source,bash]
 .execute in shell
-curl -s http://localhost:8080/users/5925e46d9aa2b5d51cc9c3c0 | jq .
+http -h POST http://localhost:8080/users/ 'Content-Type: application/json' email=john@doe.com name=John lastname=Doe
++
+[source]
+.response
+HTTP/1.1 201
+Date: Thu, 25 May 2017 10:12:17 GMT
+Location: http://localhost:8080/users/5926ae01410df8000740da9a
+Transfer-Encoding: chunked
+X-Application-Context: application
+
+* Sample get user request
 +
 [source,bash]
+.execute in shell
+http :8080/users/5926ae01410df8000740da9a
++
+[source]
 .response
+HTTP/1.1 200
+Content-Type: application/json;charset=UTF-8
+Date: Thu, 25 May 2017 10:12:43 GMT
+Transfer-Encoding: chunked
+X-Application-Context: application
 {
-  "email": "email@mail.com",
-  "name": "John",
-  "lastname": "Doe"
+    "email": "john@doe.com",
+    "lastname": "Doe",
+    "name": "John"
 }
